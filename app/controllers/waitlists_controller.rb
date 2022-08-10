@@ -4,4 +4,5 @@ class WaitlistsController < ApplicationController
 def index
     render json: Waitlist.all, status: :ok
 end
+
 end

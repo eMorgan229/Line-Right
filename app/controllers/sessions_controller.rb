@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     #let's the user perform any controller action before authorizing the user? - found on the "Rails authentication made simple webiste in bookmarks"
-    # skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: :create
 
     #POST /login
     def create

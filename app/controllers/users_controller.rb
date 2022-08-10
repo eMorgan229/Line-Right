@@ -10,7 +10,7 @@ end
 #GET /me
 def show
     user = User.find_by(id: session[:user_id])
-        render json: user, serializer: UserWaitlistsSerializer
+        render json: user 
 end
 
 
