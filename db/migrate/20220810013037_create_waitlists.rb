@@ -5,7 +5,7 @@ class CreateWaitlists < ActiveRecord::Migration[6.1]
       t.string :theatre_name
       t.string :image
       t.integer :line_count
-      t.time :wait_time
+      t.integer :wait_time
       t.decimal :theatre_latitude
       t.decimal :theatre_longitude
 

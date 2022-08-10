@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2022_08_10_013804) do
     t.string "theatre_name"
     t.string "image"
     t.integer "line_count"
-    t.time "wait_time"
+    t.integer "wait_time"
     t.decimal "theatre_latitude"
     t.decimal "theatre_longitude"
     t.datetime "created_at", precision: 6, null: false
