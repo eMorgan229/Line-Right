@@ -1,0 +1,2 @@
+class UserWaitlistsController < ApplicationController
+end
