@@ -1,97 +1,92 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button';
+import {useNavigate} from 'react-router-dom'
+import Form from 'react-bootstrap/Form';
 
-const theme = createTheme();
 
-const Signup = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
-      };
+const Login = ({onLogin}) => {
+    const history = useNavigate()
+    const [errors, setErrors] = useState([])
+    const [formData, setFormData] = useState({
+        username: "",
+        password: ""
+    })
     
-      return (
-        <ThemeProvider theme={theme}>
-          <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 8,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
+
+    function handleChange(e) {
+        const {name, value} = e.target
+        console.log(name, value)
+        setFormData((formData) => ({...formData, 
+            [name]: value}))
+    }
+
+    function handleLogin(e) {
+        e.preventDefault();
+        console.log(formData)
+        fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData),
+            }).then((r) => {
+                if (r.ok) {
+                    r.json().then((user) => onLogin(user));
+            history("/waitlists")
+                } else {
+                    r.json().then((err) => setErrors(err.errors));
+            }
+        })
+        setFormData({
+            username: "",
+            password: ""
+        });
+        }
+
+
+return (
+    <div className="form">
+        
+        <Form onSubmit={handleLogin}>
+            <h1 className="login">Login!</h1>
+            <Form.Group className="mb-3" controlId="formBasicUsername">
+                <Form.Label className="form-text">Enter Username</Form.Label>
+                <Form.Control 
+                    placeholder="Enter username" 
+                    name="username" 
+                    value={formData.username}
+                    onChange={handleChange}
                 />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+            
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="form-text">Password</Form.Label>
+                <Form.Control 
+                    type="password" 
+                    placeholder="Enter Password"
+                    name="password"
+                    value={formData.password} 
+                    onChange={handleChange}
                 />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link href="#" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
-                  </Grid>
-                </Grid>
-              </Box>
-            </Box>
-          </Container>
-        </ThemeProvider>
-    );
+                {/* <Form.Text className="form-text">
+                   I hope you didn't forget your password.... there's no way to reset it...it's a feature
+                </Form.Text> */}
+            </Form.Group>
+            {/* <Form.Group className="mb-3" controlId="formBasicCheckbox"> */}
+                {/* <Form.Check type="checkbox" label="Check me out" /> */}
+            {/* </Form.Group> */}
+            <Button className="button" variant="primary" type="submit">
+                Submit
+            </Button>
+            <br/>
+            <br/>
+            <span className='form-text'>Need A Line-Right account? <a href="/signup">Signup</a> here!</span>
+
+        </Form>
+
+    </div>
+
+)
 }
-export default Signup;
+export default Login;

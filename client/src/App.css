@@ -2,37 +2,158 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 50px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.grocery-list {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grocery-form {
+  height: 200px;
+    width: 200px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: right; 
+    /* display: inline-block; */
+  /* padding: 1rem 1rem; */
+  /* vertical-align: top;
+
+  position: fixed;
+    top: 0;
+    left: -20;
+    /* z-index: 999; */
+    width: 25%;
+    height: 23px;
+    
+}
+
+/* .body{
+    background-image: url("https://cdn.pixabay.com/photo/2015/12/19/02/12/texture-1099399_960_720.jpg");
+    background-color: #cccccc;
+       
+} */
+
+.logo {
+  font-family: europa-boldregular, sans-serif;
+    font-weight: 700;
+}
+
+.spinach-icon {
+  height: 55px;
+  width: auto;
+  margin-left: 5px;
+}
+
+.title {
+  font-family: 'Zeyada';
+  font-size: 50px;
+}
+
+.logout-button {
+  font-family: 'Zeyada';
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.welcome {
+  display: inline;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 25px;
+  width: 150px;
+}
+
+.welcome-text {
+  font-family: 'Zeyada';
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: #6DB673 !important;
+}
+
+
+.color-nav {
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jw8c7B_VOQnnOXCRHhKdFehzYL1-criNfw&usqp=CAU"); */
+  background-image: linear-gradient(-90deg, #d38312, #a83279)
+  
+}
+
+.nav-toggle {
+  background-color: rgba(255,255,255,0.5) !important;
+}
+
+.nav-link {
+  /* font-family: 'Zeyada'; */
+  font-size: 20px;
+  font-weight: bold !important;
+  color: black !important;
+}
+
+.me-auto {
+  background-color: rgba(255,255,255,0.5) !important;
+  text-align: center;
+}
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.login {
+  font-family: 'Zeyada';
+  font-size: 50px;
+  font-weight: bold !important;
+
+}
+
+.form-text {
+  font-weight: bold !important;
+  color: black !important;
+  font-size: 15px !important;
+}
+
+.grocery-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grocery-list-card-name {
+  font-family: 'Zeyada';
+  font-weight: bold !important;
+  color: black !important;
+  font-size: 35px !important;
+}
+
+.link-view-items {
+  font-style: italic;
+  color: darkgreen;
+}
+
+.grocery-list-card {
+  width: 18rem;
+  background-color: #F3E779 !important;
+  box-shadow: 5px 10px 8px #888888;
+  margin-bottom: 10px;
 }

@@ -15,6 +15,15 @@
     "@emotion/styled": "^11.10.0",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.10.0"
+    "@mui/material": "^5.10.0",
+    "bootstrap": "^5.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.2",
+    "autoprefixer": "^10.4.8",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8"
   }
 }
