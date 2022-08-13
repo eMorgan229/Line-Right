@@ -4,13 +4,13 @@ import {Routes, Route} from "react-router-dom"
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import AllWaitlists from './components/AllWaitlists';
-import ViewShow from './components/ViewShow';
 import NavBar from './components/NavBar';
 // import {Helmet} from "react-helmet";
 import MyWaitlist from './components/MyWaitlist';
 
 function App() {
   const [user, setUser] = useState({})
+  const [myWaitlist, setMyWaitlist] = useState([])
 
   // this persists user session
   useEffect(() => {
@@ -25,6 +25,18 @@ function App() {
     setUser(user)
   }
 
+  useEffect(() => {
+    fetch('/my-waitlists')
+    .then((r) => r.json())
+    .then(w => setMyWaitlist(w))
+}, [])
+
+  function updateMyWaitlist(myWaitlist) {
+    setMyWaitlist(myWaitlist)
+  }
+  console.log(myWaitlist)
+
+
   return (
     <div className="App">
        {/* <Helmet>
@@ -38,8 +50,10 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<Login onLogin={handleLogin}/>}/>
         <Route exact path="/signup" element={<SignUp onLogin={handleLogin}/>}/>
-        <Route exact path="/waitlists" element={<AllWaitlists />}/>
-        <Route exact path="/my-waitlists" element={<MyWaitlist/>}/>
+        <Route exact path="/waitlists" element={<AllWaitlists user={user} updateMyWaitlist={updateMyWaitlist}/>}/>
+        <Route exact path="/my-waitlists" element={<MyWaitlist myWaitlist={myWaitlist} 
+          // updateMyWaitlist={updateMyWaitlist}
+          />}/>
 
         {/* <Route exact path="/waitlists/:id" element={<ViewShow/>}/> */}
 

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const AllWaitLists = () => {
+const AllWaitLists = ({ updateMyWaitlist, user }) => {
 
 const[waitlist, setWaitlist] = useState([]);
+
+console.log(waitlist)
 
 useEffect(() => {
     fetch('/waitlists')
@@ -14,22 +16,41 @@ useEffect(() => {
 
  console.log(waitlist)
 
-const displayedWaitLists = waitlist.map((waitlist) => 
+const displayedWaitLists = waitlist.map((singleWaitlist) => 
     (<Card>
-    <Card.Header>{waitlist.theatre_name}</Card.Header>
+    <Card.Header>{singleWaitlist.theatre_name}</Card.Header>
     <Card.Body>
-      <Card.Title>{waitlist.show_name}</Card.Title>
+      <Card.Title>{singleWaitlist.show_name}</Card.Title>
       <Card.Text>
-        Current Number of People in Line: {waitlist.line_count}
+        Current Number of People in Line: {singleWaitlist.line_count}
       </Card.Text>
       <Card.Text>
-       Current Waittime: {waitlist.wait_time/60} minutes
+       Current Waittime: {singleWaitlist.wait_time/60} minutes
       </Card.Text>
-      <Button variant="primary">add me to the waitlist</Button>
+      <Button variant="primary" onClick={()=> handleAddToWaitList(singleWaitlist)}>add me to the waitlist</Button>
     </Card.Body>
     </Card>
     )
   );
+
+  function handleAddToWaitList (newWaitlist) {
+    const updateWaitlistObj = {
+      waitlist_id: newWaitlist.id,
+      user_id: user.id, //session[:user_id] hard coded to "Em" but need to update to reflect current session
+      //user created_at to get the start time instead of time_in
+    };
+
+    fetch('/my-waitlists', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateWaitlistObj),
+    })
+      .then((r) => r.json())
+      .then(() => updateMyWaitlist())
+  }
+  
     
     return (
         <>

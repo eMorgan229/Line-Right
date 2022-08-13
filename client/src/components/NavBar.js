@@ -17,6 +17,8 @@ const NavBar = ({user, setUser}) => {
       }
     })
   }
+
+  
     return(
             <Navbar className="color-nav" expand="lg">
             <Container >

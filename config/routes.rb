@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 #waitlists
   get "/waitlists", to: "waitlists#index"
 #user_waitlist
-
+  post "/my-waitlists", to: "user_waitlists#create"
   ##****view a list of a user's waitlists based on the current session (similar to "/me" route with a custom serializer)
   get "/my-waitlists", to: "user_waitlists#show"
 
