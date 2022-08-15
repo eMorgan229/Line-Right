@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_10_013804) do
+ActiveRecord::Schema.define(version: 2022_08_14_175915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "user_waitlists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "waitlist_id"
-    t.datetime "time_in"
-    t.datetime "time_out"
+  create_table "theatres", force: :cascade do |t|
+    t.string "show_name"
+    t.string "theatre_name"
+    t.decimal "theatre_longitude"
+    t.decimal "theatre_latitude"
+    t.string "image"
+    t.integer "wait_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,13 +38,9 @@ ActiveRecord::Schema.define(version: 2022_08_10_013804) do
   end
 
   create_table "waitlists", force: :cascade do |t|
-    t.string "show_name"
-    t.string "theatre_name"
-    t.string "image"
-    t.integer "line_count"
-    t.integer "wait_time"
-    t.decimal "theatre_latitude"
-    t.decimal "theatre_longitude"
+    t.integer "user_id"
+    t.integer "theatre_id"
+    t.datetime "time_out"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

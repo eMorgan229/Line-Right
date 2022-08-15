@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :user_waitlists
-    has_many :waitlists, through: :user_waitlists
+    has_many :waitlists
+    has_many :theatres, through: :waitlists
      has_secure_password
 end

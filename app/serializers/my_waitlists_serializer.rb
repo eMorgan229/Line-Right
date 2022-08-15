@@ -1,3 +1,3 @@
 class MyWaitlistsSerializer < ActiveModel::Serializer
-  attributes has_many :user_waitlists
+  has_many :waitlists
 end

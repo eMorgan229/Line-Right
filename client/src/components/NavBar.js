@@ -40,7 +40,7 @@ const NavBar = ({user, setUser}) => {
             <Nav className="me-auto">
             <Nav.Link className="nav-link" href="/login">Login</Nav.Link>
             {/* <Nav.Link href="/grocery_lists/:id">Grocery List</Nav.Link> */}
-            <Nav.Link href="/waitlists">Waitlists</Nav.Link>
+            <Nav.Link href="/theatres">Theatres</Nav.Link>
             <Nav.Link href="/my-waitlists">My Waitlists</Nav.Link>
 
           </Nav>

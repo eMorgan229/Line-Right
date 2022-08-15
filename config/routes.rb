@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   
-#waitlists
-  get "/waitlists", to: "waitlists#index"
-#user_waitlist
-  post "/my-waitlists", to: "user_waitlists#create"
+#theatres
+  get "/theatres", to: "theatres#index"
+#waitlist
+  post "/my-waitlists", to: "waitlists#create"
   ##****view a list of a user's waitlists based on the current session (similar to "/me" route with a custom serializer)
-  get "/my-waitlists", to: "user_waitlists#show"
+  get "/my-waitlists", to: "waitlists#show"
+  get "/waitlists", to: "waitlists#update_line_count"
 
 end

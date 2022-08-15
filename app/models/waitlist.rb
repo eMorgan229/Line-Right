@@ -1,4 +1,4 @@
 class Waitlist < ApplicationRecord
-    has_many :user_waitlists
-    has_many :users, through: :user_waitlists
+    belongs_to :theatre
+    belongs_to :user
 end

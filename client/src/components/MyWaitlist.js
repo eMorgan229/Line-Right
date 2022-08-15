@@ -13,12 +13,12 @@ const MyWaitlist = ({ myWaitlist }) => {
     (<Card>
     <Card.Header>{singleWaitlist.waitlist_id}</Card.Header>
     <Card.Body>
-      {/* <Card.Title>{singleWaitlist.show_name}</Card.Title> */}
+      <Card.Title>{singleWaitlist.show_name}</Card.Title>
       <Card.Text>
-        {/* Current Number of People in Line: {singleWaitlist.line_count} */}
+        Current Number of People in Line: {singleWaitlist.line_count}
       </Card.Text>
       <Card.Text>
-       {/* Current Waittime: {singleWaitlist.wait_time/60} minutes */}
+       Current Waittime: {singleWaitlist.wait_time/60} minutes
       </Card.Text>
       <Button variant="primary">add me to the waitlist</Button>
     </Card.Body>
