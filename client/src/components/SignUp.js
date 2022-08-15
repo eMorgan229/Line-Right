@@ -43,7 +43,7 @@ const SignUp = ({onLogin}) => {
             username: "",
             password: "",
             name: "",
-            phone_numer: "",
+            phone_number: "",
         });
         }
     return(
@@ -75,21 +75,21 @@ const SignUp = ({onLogin}) => {
                     Please use a secure password. Protect yourself!
                 </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label className='form-text'>Enter Your Name</Form.Label>
                 <Form.Control 
                     placeholder="Name" 
-                    name="username" 
+                    name="name" 
                     value={formData.username}
                     onChange={handleChange}
                 />
                 
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
                 <Form.Label className='form-text'>Enter a Mobile Number</Form.Label>
                 <Form.Control 
                     placeholder="Mobile Number" 
-                    name="username" 
+                    name="phone number" 
                     value={formData.username}
                     onChange={handleChange}
                 />

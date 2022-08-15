@@ -44,15 +44,18 @@ console.log(myWaitlist)
   useEffect(() => {
       fetch('/theatres')
           .then((r) => r.json())
-          .then((t) => {setTheatres(t)})
+          .then((t) => {
+            setTheatres(t)  
+          })
   }, [])
 
-  function updateButton(toggleButton) {
+  function handleUpdateButton(toggleButton) {
     setToggleButton(!toggleButton)
+    
+    console.log("i'm a button and I'm changing!")
   }
 
    console.log(theatres)
-
    
 
   return (
@@ -68,7 +71,7 @@ console.log(myWaitlist)
       <Routes>
         <Route exact path="/login" element={<Login onLogin={handleLogin}/>}/>
         <Route exact path="/signup" element={<SignUp onLogin={handleLogin}/>}/>
-        <Route exact path="/theatres" element={<Theatres user={user} theatres={theatres} updateWaitlists={updateMyWaitlist}/>}/>
+        <Route exact path="/theatres"  element={<Theatres user={user} theatres={theatres} toggleButton={toggleButton} handleUpdateButton={handleUpdateButton} updateWaitlists={updateMyWaitlist}/>}/>
         <Route exact path="/my-waitlists" element={<MyWaitlist myWaitlist={myWaitlist} 
           // updateMyWaitlist={updateMyWaitlist}
           />}/>

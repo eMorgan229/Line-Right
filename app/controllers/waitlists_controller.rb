@@ -24,7 +24,7 @@ end
 #GET "/waitlists" for now, but will be: the url params :theatre_id is being weird /waitlists/:theatre_id
 # ** for now it's hard coded to reutrn the number 1 
 def update_line_count
-    waitlist = Waitlist.where.not(time_out: nil).and(Waitlist.where(theatre_id: 5)).count
+    waitlist = Waitlist.where(time_out: nil).group("theatre_id").count
     # Waitlist.find(params[:theatre_id])
     render json: waitlist
 end
