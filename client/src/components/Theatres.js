@@ -19,23 +19,34 @@ const[lineCount, setLineCount] = useState({}) //this is an object, the key is th
 console.log(lineCount)
 
 
+function handleUpdateButton(index) {
+  fetch('/my-waitlists', {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((r) => r.json())
+    .then((obj) => {
+      console.log(obj)
+      // (obj.id === theatres.id) ? setToggleButton(!toggleButton) : toggleButton
+    })
+
+}
 
 
-  function handleUpdateButton(index) {
-    setToggleButton((prev) => {
-      return prev === index ? null : !toggleButton ;
-  });
-  console.log('clicked', index);
-  }
+
+  
 
   function handleAddToWaitlist (t) {
     const updateWaitlistObj = {
       theatre_id: t.id,
-      user_id: user.id, //session[:user_id] hard coded to "Em" but need to update to reflect current session
-      //user created_at to get the start time instead of time_in
+      user_id: user.id,
     };
     
-    handleUpdateButton();
+    
+    handleUpdateButton()
+
 
     fetch('/my-waitlists', {
       method: "POST",
@@ -82,7 +93,8 @@ const displayedTheatres = theatres.map((t, index) =>
       <Button 
       variant="primary"
       key={index} 
-      onClick={()=> handleAddToWaitlist(t)}>{ toggleButton? "add me to the waitlist" : "delete" }</Button>
+      onClick={()=> handleAddToWaitlist(t)}>{"add me to the waitlist"}
+      </Button>
     </Card.Body>
     </Card>
     )

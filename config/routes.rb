@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   ##****view a list of a user's waitlists based on the current session (similar to "/me" route with a custom serializer)
   get "/my-waitlists", to: "waitlists#show"
   get "/waitlists", to: "waitlists#update_line_count"
+  patch "/remove-from-line/:id", to: "waitlists#remove_from_line"
 
 end

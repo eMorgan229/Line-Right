@@ -9,7 +9,17 @@ waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: n
     render json: waitlists
 end
 
-
+#PATCH /remove-from-line/:id
+def remove_from_line
+    p "I was updated"
+    waitlist = Waitlist.find_by(id: params[:id])
+        if waitlist
+            waitlist.update(time_out: DateTime.now)
+            render json: waitlist
+        else
+            render json: { error: "Waitlist not found"}, status: :not_found
+        end
+end
 
 #POST /my-waitlists
 def create

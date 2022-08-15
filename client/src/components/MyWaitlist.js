@@ -4,12 +4,25 @@ import Card from 'react-bootstrap/Card';
 
 const MyWaitlist = ({ myWaitlist }) => {
 
+  function handleDeleteFromWaitlist(singleWaitlist) {
 
-    
+    console.log(singleWaitlist.id)
+    fetch(`/remove-from-line/${singleWaitlist.id}`, {
+      method: "PATCH"
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
+      // body: JSON.stringify({
+
+      // }),
+    })
+
+  }
+
 
     console.log(myWaitlist)
 
-    const displayedMyWaitLists = myWaitlist.map((singleWaitlist) => 
+    const displayedMyWaitLists = myWaitlist.map((singleWaitlist) =>
     (<Card>
     <Card.Header>{singleWaitlist.waitlist_id}</Card.Header>
     <Card.Body>
@@ -17,7 +30,11 @@ const MyWaitlist = ({ myWaitlist }) => {
       <Card.Text>
        Current Waittime: {singleWaitlist.wait_time/60} minutes
       </Card.Text>
-      <Button variant="primary">add me to the waitlist</Button>
+      <Button
+      variant="primary"
+      key={singleWaitlist.id}
+      onClick={()=> handleDeleteFromWaitlist(singleWaitlist)}>{"delete"}
+      </Button>
     </Card.Body>
     </Card>
     )
