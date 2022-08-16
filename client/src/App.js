@@ -65,7 +65,7 @@ console.log(myWaitlist)
         <Route exact path="/login" element={<Login onLogin={handleLogin}/>}/>
         <Route exact path="/signup" element={<SignUp onLogin={handleLogin}/>}/>
         <Route exact path="/theatres"  element={<Theatres user={user} theatres={theatres} updateWaitlists={updateMyWaitlist}/>}/>
-        <Route exact path="/my-waitlists" element={<MyWaitlist myWaitlist={myWaitlist} 
+        <Route exact path="/my-waitlists" element={<MyWaitlist myWaitlist={myWaitlist} theatres={theatres}
           // updateMyWaitlist={updateMyWaitlist}
           />}/>
 

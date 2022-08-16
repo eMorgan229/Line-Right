@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Timer from './Timer'
 
 const MyWaitlist = ({ myWaitlist }) => {
+
 
   function handleDeleteFromWaitlist(singleWaitlist) {
 
@@ -19,7 +21,7 @@ const MyWaitlist = ({ myWaitlist }) => {
 
   }
 
-
+  
     console.log(myWaitlist)
 
     const displayedMyWaitLists = myWaitlist.map((singleWaitlist) =>
@@ -42,6 +44,9 @@ const MyWaitlist = ({ myWaitlist }) => {
     return(
         <>
             <h1>My Waitlists</h1>
+            <div>
+              <Timer myWaitlist={myWaitlist}/>
+            </div>
             <div>
                 {displayedMyWaitLists}
             </div>
