@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "/my-waitlists", to: "waitlists#show"
   get "/waitlists", to: "waitlists#update_line_count"
   patch "/remove-from-line/:id", to: "waitlists#remove_from_line"
+  get "/shortest_wait_time", to: "waitlists#shortest_wait_time"
 
 end

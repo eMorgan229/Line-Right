@@ -6,7 +6,14 @@ def show
 
     #with the user
 waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: nil})
-    render json: waitlists
+    render json: waitlists.order("wait_time ASC")
+end
+
+#GET /shortest_wait_time
+def shortest_wait_time
+    waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: nil})
+    render json: waitlists.order("wait_time ASC").first
+
 end
 
 #PATCH /remove-from-line/:id

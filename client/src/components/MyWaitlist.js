@@ -4,6 +4,24 @@ import Card from 'react-bootstrap/Card';
 import Timer from './Timer'
 
 const MyWaitlist = ({ myWaitlist }) => {
+  const [waitTime, setWaitTime] = useState(0)
+
+
+  useEffect(() => {
+    fetch('/shortest_wait_time', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          console.log(obj.wait_time)
+          setWaitTime(obj.wait_time)
+        })
+}, []) 
+
+console.log(waitTime)
 
 
   function handleDeleteFromWaitlist(singleWaitlist) {
@@ -30,7 +48,7 @@ const MyWaitlist = ({ myWaitlist }) => {
     <Card.Body>
       <Card.Title>{singleWaitlist.show_name}</Card.Title>
       <Card.Text>
-       Current Waittime: {singleWaitlist.wait_time/60} minutes
+       Current Waittime: { <Timer waitTime={singleWaitlist.wait_time}/>} 
       </Card.Text>
       <Button
       variant="primary"
@@ -44,9 +62,7 @@ const MyWaitlist = ({ myWaitlist }) => {
     return(
         <>
             <h1>My Waitlists</h1>
-            <div>
-              <Timer myWaitlist={myWaitlist}/>
-            </div>
+            
             <div>
                 {displayedMyWaitLists}
             </div>

@@ -75,7 +75,7 @@ function handleUpdateButton(index) {
           tempLineCount[key] = value
         }
         setLineCount(tempLineCount)
-        console.log(lineCount)
+        console.log(lineCount, tempLineCount)
       })
   }
 // setInterval(() => {handleLineCountRefresh()}, 15000);

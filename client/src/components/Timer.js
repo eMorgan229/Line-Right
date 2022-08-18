@@ -1,10 +1,12 @@
 import {useState, useEffect, useRef} from 'react'
 
-const Timer = ({myWaitlist}) => {
+const Timer = ({waitTime}) => {
+    const [timer, setTimer] = useState("00:00:00")
+    const Ref = useRef(null);
 
-const [timer, setTimer] = useState("00:00:00")
-const Ref = useRef(null);
-
+    
+    console.log(waitTime)
+    
 
 
 
@@ -22,19 +24,17 @@ const getTimeRemaining = (e) => {
 
 const startTimer = (e) => {
 
-    let { total, hours, minutes, seconds } 
-                = getTimeRemaining(e);
-    if (total >= 0) {
-
-        // update the timer
-        // check if less than 10 then we need to 
-        // add '0' at the beginning of the variable
-        setTimer(
-            (hours > 9 ? hours : '0' + hours) + ':' +
-            (minutes > 9 ? minutes : '0' + minutes) + ':'
-            + (seconds > 9 ? seconds : '0' + seconds)
-        )
-    }
+    let { total, hours, minutes, seconds } = getTimeRemaining(e);
+        if (total >= 0) {
+ 
+            // check if less than 10 then we need to 
+            // add '0' at the beginning of the variable
+            setTimer(
+                (hours > 9 ? hours : '0' + hours) + ':' +
+                (minutes > 9 ? minutes : '0' + minutes) + ':'
+                + (seconds > 9 ? seconds : '0' + seconds)
+            )
+        }
 }
 
 
@@ -43,7 +43,7 @@ const clearTimer = (e) => {
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next    
-    setTimer('00:00:10');
+    setTimer('00:00:00');
 
     // If you try to remove this line the 
     // updating of timer Variable will be
@@ -60,7 +60,7 @@ const getDeadTime = () => {
 
     // This is where you need to adjust if 
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + 10);
+    deadline.setSeconds(deadline.getSeconds() + waitTime);
     return deadline;
 }
 
@@ -79,11 +79,16 @@ useEffect(() => {
 // by the button
 const onClickReset = () => {
     clearTimer(getDeadTime());
+
 }
 
     return(
-        <>Hey, girl, I'm a timer!
+        <><h5>You have
+        </h5> 
             <h2>{timer}</h2>
+            <h5>left until you need to be back at the THEATRE NAME to purchase your tickets to SHOWNAME
+
+            </h5>
             <button onClick={onClickReset}>click to reset</button>
         </>
     )
