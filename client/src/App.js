@@ -55,9 +55,9 @@ console.log(myWaitlist)
     <div className="App">
        <Helmet>
         <meta charSet="utf-8" />
-        <title>Grocery List</title>
+        <title>Line-Right</title>
         <link rel="canonical" href="http://mysite.com/example" />
-        <meta name="description" content="Grocery List Organizer Application" />
+        <meta name="description" content="Wait-List organization application" />
       </Helmet>
 
       <NavBar user={user} setUser={setUser}/>

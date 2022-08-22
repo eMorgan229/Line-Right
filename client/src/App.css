@@ -2,11 +2,7 @@
   text-align: center;
 }
 
-.form {
-  display: flex;
-  margin-top: 50px;
-  justify-content: center;
-}
+
 
 .grocery-list {
   display: inline-block;
@@ -40,18 +36,20 @@
 } */
 
 .logo {
-  font-family: europa-boldregular, sans-serif;
-    font-weight: 700;
+  font-family: 'Bungee Hairline', cursive;
+  font-weight: 700;
 }
 
-.spinach-icon {
-  height: 55px;
+.line-icon {
+  height: 70px;
   width: auto;
   margin-left: 5px;
+  text-align: center;
+  padding-bottom: 20px !important;
 }
 
 .title {
-  font-family: 'Zeyada';
+  font-family: 'Bungee Hairline', cursive;
   font-size: 50px;
 }
 
@@ -66,9 +64,9 @@
 
 .welcome {
   display: inline;
-  background-color: rgba(255,255,255,0.5);
+  /* background-color: rgba(255,255,255,0.5);
   border-radius: 25px;
-  width: 150px;
+  width: 150px; */
 }
 
 .welcome-text {
@@ -81,14 +79,19 @@
 }
 
 .button {
-  background-color: #6DB673 !important;
+  background: rgba(blue, 15, 15, 0.1) !important;
+  border: bold;
+  font-family: 'Bungee Hairline', bold !important;
+
 }
 
 
 .color-nav {
   /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jw8c7B_VOQnnOXCRHhKdFehzYL1-criNfw&usqp=CAU"); */
-  background-image: linear-gradient(-90deg, #d38312, #a83279)
-  
+  background-image: linear-gradient(-90deg, lightblue, white);
+  position: fixed;
+  top: 0 !important;
+
 }
 
 .nav-toggle {
@@ -96,15 +99,21 @@
 }
 
 .nav-link {
-  /* font-family: 'Zeyada'; */
-  font-size: 20px;
+  font-family: 'Bungee Hairline', bold;
+  font-size: 20px !important;
   font-weight: bold !important;
   color: black !important;
+  padding: 10px !important;
 }
 
 .me-auto {
-  background-color: rgba(255,255,255,0.5) !important;
+  /* background-color: rgba(255,255,255,0.5) !important; */
   text-align: center;
+}
+
+.nav-link:hover{
+  color: gray !important;
+
 }
 
 #background-video {
@@ -121,16 +130,17 @@
 }
 
 .login {
-  font-family: 'Zeyada';
+  font-family: 'Bungee Hairline', cursive;
   font-size: 50px;
   font-weight: bold !important;
-
 }
 
 .form-text {
   font-weight: bold !important;
   color: black !important;
   font-size: 15px !important;
+  font-family: 'Spline Sans Mono', monospace;
+  font-weight: bold !important;
 }
 
 .grocery-list-container {
@@ -157,3 +167,193 @@
   box-shadow: 5px 10px 8px #888888;
   margin-bottom: 10px;
 }
+
+.navbar-collapse {
+  flex-grow: 0 !important;
+}
+
+.logo-navbar-brand{
+  text-align: center;
+}
+
+.login-form{
+  justify-content: center;
+  align-items: flex-end;
+  width: 285px;
+  height: 145px;
+  margin-top: 60px;
+  background-size: cover;
+  z-index:100;
+}
+
+ .whole-login {
+  justify-content: center;
+  display: flex;
+ } 
+
+ .link{
+  color: blue;
+  font-family: 'Bungee', cursive;
+
+ }
+
+ .input-text{
+  font-family: 'Bungee Hairline', cursive;
+  color: black !important;
+ }
+/*background video css*/
+      @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+      *{
+          margin: 0px;
+          padding: 0px;
+      }
+
+      body{
+          font-family: 'Exo', sans-serif;
+      }
+
+
+      /* .context {
+          width: 100%;
+          position: absolute;
+          top:50vh;
+          
+      }
+
+      .context h1{
+          text-align: center;
+          color: #fff;
+          font-size: 50px;
+      } */
+
+
+      .area{
+          background: #4e54c8;  
+          background: linear-gradient(-90deg, blue, white);
+          /* -webkit-linear-gradient(to left, #8f94fb, #4e54c8);   */
+          width: 100%;
+          height:100vh;
+        background-size: cover;
+        max-width: 100%;
+        max-height: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .circles{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+      }
+
+      .circles li{
+          position: absolute;
+          display: block;
+          list-style: none;
+          width: 20px;
+          height: 20px;
+          background: rgba(255, 255, 255, 0.2);
+          animation: animate 25s linear infinite;
+          bottom: -150px;
+          
+      }
+
+      .circles li:nth-child(1){
+          left: 25%;
+          width: 80px;
+          height: 80px;
+          animation-delay: 0s;
+      }
+
+
+      .circles li:nth-child(2){
+          left: 10%;
+          width: 20px;
+          height: 20px;
+          animation-delay: 2s;
+          animation-duration: 12s;
+      }
+
+      .circles li:nth-child(3){
+          left: 70%;
+          width: 20px;
+          height: 20px;
+          animation-delay: 4s;
+      }
+
+      .circles li:nth-child(4){
+          left: 40%;
+          width: 60px;
+          height: 60px;
+          animation-delay: 0s;
+          animation-duration: 18s;
+      }
+
+      .circles li:nth-child(5){
+          left: 65%;
+          width: 20px;
+          height: 20px;
+          animation-delay: 0s;
+      }
+
+      .circles li:nth-child(6){
+          left: 75%;
+          width: 110px;
+          height: 110px;
+          animation-delay: 3s;
+      }
+
+      .circles li:nth-child(7){
+          left: 35%;
+          width: 150px;
+          height: 150px;
+          animation-delay: 7s;
+      }
+
+      .circles li:nth-child(8){
+          left: 50%;
+          width: 25px;
+          height: 25px;
+          animation-delay: 15s;
+          animation-duration: 45s;
+      }
+
+      .circles li:nth-child(9){
+          left: 20%;
+          width: 15px;
+          height: 15px;
+          animation-delay: 2s;
+          animation-duration: 35s;
+      }
+
+      .circles li:nth-child(10){
+          left: 85%;
+          width: 150px;
+          height: 150px;
+          animation-delay: 0s;
+          animation-duration: 11s;
+      }
+
+
+
+      @keyframes animate {
+
+          0%{
+              transform: translateY(0) rotate(0deg);
+              opacity: 1;
+              border-radius: 0;
+          }
+
+          100%{
+              transform: translateY(-1000px) rotate(720deg);
+              opacity: 0;
+              border-radius: 50%;
+          }
+
+      }
+
+/*end login form*/

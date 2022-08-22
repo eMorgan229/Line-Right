@@ -41,17 +41,34 @@ const Login = ({onLogin}) => {
             username: "",
             password: ""
         });
-        }
+    }
 
 
 return (
-    <div className="form">
+<div className="form">
         
-        <Form onSubmit={handleLogin}>
+<div className="area" >
+                <ul className="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
+
+
+        <div className="whole-login">
+        <Form onSubmit={handleLogin} className="login-form">
             <h1 className="login">Login!</h1>
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label className="form-text">Enter Username</Form.Label>
                 <Form.Control 
+                    className="input-text"
                     placeholder="Enter username" 
                     name="username" 
                     value={formData.username}
@@ -63,6 +80,7 @@ return (
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label className="form-text">Password</Form.Label>
                 <Form.Control 
+                className="input-text"
                     type="password" 
                     placeholder="Enter Password"
                     name="password"
@@ -81,9 +99,13 @@ return (
             </Button>
             <br/>
             <br/>
-            <span className='form-text'>Need A Line-Right account? <a href="/signup">Signup</a> here!</span>
+            <span className='form-text'>Need A Line-Right account? <a className="link" href="/signup">Signup</a> here!</span>
 
         </Form>
+
+        </div>
+    </div>
+
 
     </div>
 

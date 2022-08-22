@@ -23,25 +23,34 @@ const NavBar = ({user, setUser}) => {
             <Navbar className="color-nav" expand="lg">
             <Container >
                 <Navbar.Brand className="logo">
+                <img className="line-icon" alt="people in line" src='lineicon.ico'/>
                 <span className="title">
                   Line-Right
                 </span>
                 </Navbar.Brand>
-              {user && user.username ? <div className="welcome">
+
+              {/* {user && user.username ? <div className="welcome">
                 <div className="welcome-text">
                 Welcome back , {user.name}!
                 </div>
-                <div className="logout-button">              
+                {/* <div className="logout-button">              
                 <Button className="button" onClick={handleLogout}>Log Out</Button>
-                </div>
-              </div> : ""}
-                <Navbar.Toggle className="nav-toggle" aria-controls="basic-navbar-nav" />
+                </div> */}
+              {/* </div> : ""} */} 
+              <Navbar.Toggle className="nav-toggle" aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
+                
+                  <Nav.Link className="nav-link" href="/theatres">All Theatres</Nav.Link>
+                  <Nav.Link className="nav-link" href="/my-waitlists">My Waitlists</Nav.Link>
+                
             <Nav className="me-auto">
-            <Nav.Link className="nav-link" href="/login">Login</Nav.Link>
-            {/* <Nav.Link href="/grocery_lists/:id">Grocery List</Nav.Link> */}
-            <Nav.Link href="/theatres">Theatres</Nav.Link>
-            <Nav.Link href="/my-waitlists">My Waitlists</Nav.Link>
+              {user && user.username ? <div className="welcome">
+              <Nav.Link className="nav-link" onClick={handleLogout}>Log Out</Nav.Link>
+
+              </div>: <div className="login">
+                  <Nav.Link className="nav-link" href="/login">Login</Nav.Link>
+                </div>}
+            
 
           </Nav>
         </Navbar.Collapse>
