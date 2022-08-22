@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const AllWaitLists = ({ updateMyWaitlist, user, theatres}) => {
+const AllWaitLists = ({ user, theatres, myWaitlist, updateWaitlists}) => {
 
-  const[toggleButton, setToggleButton] = useState(true)
+  console.log(myWaitlist)
 
-
-  console.log(theatres)
+  function theatreInWaitlist(theatreId) {
+    console.log(myWaitlist)
+    for(const index in myWaitlist) {
+      console.log(myWaitlist[index].id)
+      if (myWaitlist[index].id === theatreId)
+        return true
+    }
+    return false
+  }
 
 let tempLineCount = []
 theatres.forEach((t) => {
@@ -35,9 +42,6 @@ function handleUpdateButton(index) {
 }
 
 
-
-  
-
   function handleAddToWaitlist (t) {
     const updateWaitlistObj = {
       theatre_id: t.id,
@@ -56,13 +60,13 @@ function handleUpdateButton(index) {
       body: JSON.stringify(updateWaitlistObj),
     })
       .then((r) => r.json())
-      .then((t) => updateMyWaitlist(t))
+      .then((t) => updateWaitlists(t))
   }
   
   console.log()
 
   function handleLineCountRefresh() {
-    fetch('/waitlists', {
+    fetch('/line_count', {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -79,8 +83,22 @@ function handleUpdateButton(index) {
       })
   }
 // setInterval(() => {handleLineCountRefresh()}, 15000);
-const displayedTheatres = theatres.map((t, index) => 
-    (<Card>
+let displayedTheatres = theatres.map((t, index) => 
+
+   {
+      let addToLineButton;
+      if (theatreInWaitlist(t.id)){
+        addToLineButton = <>You've been added!</>
+      }
+      else {
+        addToLineButton = 
+        <Button 
+        variant="primary"
+        key={index} 
+        onClick={()=> handleAddToWaitlist(t)}>{"add me to the waitlist"}
+        </Button>
+      }
+      return (<Card>
     <Card.Header>{t.theatre_name}</Card.Header>
     <Card.Body>
       <Card.Title>{t.show_name}</Card.Title>
@@ -90,14 +108,10 @@ const displayedTheatres = theatres.map((t, index) =>
       <Card.Text>
        Current Waittime: {t.wait_time/60} minutes
       </Card.Text>
-      <Button 
-      variant="primary"
-      key={index} 
-      onClick={()=> handleAddToWaitlist(t)}>{"add me to the waitlist"}
-      </Button>
+        {addToLineButton}
     </Card.Body>
     </Card>
-    )
+    )}
   );
     return (
         <>

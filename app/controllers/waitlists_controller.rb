@@ -16,6 +16,7 @@ def shortest_wait_time
 
 end
 
+
 #PATCH /remove-from-line/:id
 def remove_from_line
     p "I was updated"
@@ -41,10 +42,17 @@ end
 #GET "/waitlists" for now, but will be: the url params :theatre_id is being weird /waitlists/:theatre_id
 # ** for now it's hard coded to reutrn the number 1 
 def update_line_count
-    waitlist = Waitlist.where(time_out: nil).group("theatre_id").count
     # Waitlist.find(params[:theatre_id])
     render json: waitlist
 end
+
+def get_line_count
+    line_count = Waitlist.where(time_out: nil).group("theatre_id").count
+
+    render json: line_count
+end
+
+
 
 private
 def waitlist_params

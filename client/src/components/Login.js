@@ -32,7 +32,7 @@ const Login = ({onLogin}) => {
             }).then((r) => {
                 if (r.ok) {
                     r.json().then((user) => onLogin(user));
-            history("/waitlists")
+            history("/theatres")
                 } else {
                     r.json().then((err) => setErrors(err.errors));
             }

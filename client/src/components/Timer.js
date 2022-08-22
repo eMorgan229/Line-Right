@@ -5,11 +5,7 @@ const Timer = ({waitTime}) => {
     const Ref = useRef(null);
 
     
-    console.log(waitTime)
     
-
-
-
 
 //% returns the remainder of 2 numbers
 const getTimeRemaining = (e) => {

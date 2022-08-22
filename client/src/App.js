@@ -5,7 +5,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Theatres from './components/Theatres';
 import NavBar from './components/NavBar';
-// import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet";
 import MyWaitlist from './components/MyWaitlist';
 
 function App() {
@@ -53,18 +53,18 @@ console.log(myWaitlist)
 
   return (
     <div className="App">
-       {/* <Helmet>
+       <Helmet>
         <meta charSet="utf-8" />
         <title>Grocery List</title>
         <link rel="canonical" href="http://mysite.com/example" />
         <meta name="description" content="Grocery List Organizer Application" />
-      </Helmet> */}
+      </Helmet>
 
       <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route exact path="/login" element={<Login onLogin={handleLogin}/>}/>
         <Route exact path="/signup" element={<SignUp onLogin={handleLogin}/>}/>
-        <Route exact path="/theatres"  element={<Theatres user={user} theatres={theatres} updateWaitlists={updateMyWaitlist}/>}/>
+        <Route exact path="/theatres"  element={<Theatres user={user} theatres={theatres} myWaitlist={myWaitlist} updateWaitlists={updateMyWaitlist}/>}/>
         <Route exact path="/my-waitlists" element={<MyWaitlist myWaitlist={myWaitlist} theatres={theatres}
           // updateMyWaitlist={updateMyWaitlist}
           />}/>
