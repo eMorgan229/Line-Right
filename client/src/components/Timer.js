@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react'
 
-const Timer = ({waitTime}) => {
+const Timer = ({handleRefresh}) => {
     const [timer, setTimer] = useState("00:00:00")
     const Ref = useRef(null);
 
@@ -31,6 +31,11 @@ const startTimer = (e) => {
                 + (seconds > 9 ? seconds : '0' + seconds)
             )
         }
+        else {
+            handleRefresh()
+            clearTimer(getDeadTime());
+
+        }
 }
 
 
@@ -56,7 +61,7 @@ const getDeadTime = () => {
 
     // This is where you need to adjust if 
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + waitTime);
+    deadline.setSeconds(deadline.getSeconds() + 60);
     return deadline;
 }
 
@@ -81,11 +86,8 @@ const onClickReset = () => {
     return(
         <><h5>You have
         </h5> 
-            <h2>{timer}</h2>
-            <h5>left until you need to be back at the THEATRE NAME to purchase your tickets to SHOWNAME
+            <h2>{timer}</h2> left until the next refresh
 
-            </h5>
-            <button onClick={onClickReset}>click to reset</button>
         </>
     )
 }

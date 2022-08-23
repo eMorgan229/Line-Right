@@ -65,6 +65,11 @@ function handleUpdateButton(index) {
   
   console.log()
 
+  useEffect(() => {
+    
+    handleLineCountRefresh()      
+}, []) 
+
   function handleLineCountRefresh() {
     fetch('/line_count', {
       method: "GET",
@@ -98,7 +103,7 @@ let displayedTheatres = theatres.map((t, index) =>
         onClick={()=> handleAddToWaitlist(t)}>{"add me to the waitlist"}
         </Button>
       }
-      return (<Card>
+      return (<Card className="card">
     <Card.Header>{t.theatre_name}</Card.Header>
     <Card.Body>
       <Card.Title>{t.show_name}</Card.Title>

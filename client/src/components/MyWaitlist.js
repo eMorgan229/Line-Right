@@ -5,7 +5,7 @@ import Timer from './Timer'
 
 const MyWaitlist = ({ myWaitlist }) => {
   const [waitTime, setWaitTime] = useState(0)
-const [lineCount, setLineCount] = useState(0)
+const [lineCount, setLineCount] = useState([])
 
   function handleWaitTimeRefresh() {
     fetch('/line_count', {
@@ -26,21 +26,29 @@ const [lineCount, setLineCount] = useState(0)
   }
 
   useEffect(() => {
-    fetch('/shortest_wait_time', {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((r) => r.json())
-        .then((obj) => {
-          console.log(obj.wait_time)
-          setWaitTime(obj.wait_time)
-        })
+    
+    handleRefresh()      
 }, []) 
 
-console.log(waitTime)
 
+function handleRefresh() {
+  fetch('/place_in_line', {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((r) => r.json())
+    .then((obj) => {
+      let tempPlaceInLine = []
+      for (const [key, value] of Object.entries(obj)) {
+        tempPlaceInLine[key] = value
+      }
+      setLineCount(tempPlaceInLine)
+      console.log(lineCount, tempPlaceInLine)
+    })
+
+}
 
   function handleDeleteFromWaitlist(singleWaitlist) {
 
@@ -58,6 +66,8 @@ console.log(waitTime)
   }
 
   
+  
+
     console.log(myWaitlist)
 
     const displayedMyWaitLists = myWaitlist.map((singleWaitlist) =>
@@ -67,8 +77,14 @@ console.log(waitTime)
       <Card.Title>{singleWaitlist.show_name}</Card.Title>
       <Card.Text>
        Current Waittime: 
-       {/* { <Timer waitTime={singleWaitlist.wait_time}/>}  */}
-       {/*in this line we want to add a helper function that will also look up a local line cout state variable*/}
+       { lineCount.length === 0 ? <></> : ` approximatley ${lineCount[singleWaitlist.id]["est_wait_time"]/60}`} 
+      </Card.Text>
+      <Card.Text>
+        {console.log(singleWaitlist.id)}
+      Number of People ahead of You: {lineCount.length === 0 ? 'Loading...' : lineCount[singleWaitlist.id]["place_in_line"] - 1 }
+       {/* Number of People in front of you:  */}
+       {/* {lineCount[singleWaitlist.theatre_id]["place_in_line"]} */}
+       
       </Card.Text>
       <Button
       variant="primary"
@@ -82,7 +98,8 @@ console.log(waitTime)
     return(
         <>
             <h1>My Waitlists</h1>
-            
+            <Timer handleRefresh={handleRefresh}/>
+            <button onClick={handleRefresh}>click to refresh</button>
             <div>
                 {displayedMyWaitLists}
             </div>

@@ -9,6 +9,30 @@ waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: n
     render json: waitlists.order("wait_time ASC")
 end
 
+#GET /place_in_line
+def show_place_in_line
+    user_id_hard_coded = 10
+
+    waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: user_id_hard_coded, time_out: nil})
+    theatre_ids = waitlists.map {|w| w.id }
+        # people_in_line = Waitlist.select { |w| theatre_ids.include?(w.theatre_id) }
+        results = {}
+        theatre_ids.each { |t| 
+            people_in_line = Waitlist.where(theatre_id: t).order("created_at ASC").select("user_id")
+            
+            only_user_ids = people_in_line.map{ |p| p.user_id}
+            place_in_line = only_user_ids.find_index(user_id_hard_coded) + 1
+            p place_in_line 
+
+            wait_time = Theatre.find_by(id: t).wait_time
+            results[t] = { "place_in_line" => place_in_line, "est_wait_time" => place_in_line * wait_time}
+
+        }
+
+
+    render json: results
+end
+
 #GET /shortest_wait_time
 def shortest_wait_time
     waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: nil})

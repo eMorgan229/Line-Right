@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   patch "/remove-from-line/:id", to: "waitlists#remove_from_line"
   get "/shortest_wait_time", to: "waitlists#shortest_wait_time"
   get "/line_count", to: "waitlists#get_line_count"
+  get "/place_in_line", to: "waitlists#show_place_in_line"
 
 end
