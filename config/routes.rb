@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get "/line_count", to: "waitlists#get_line_count"
   get "/place_in_line", to: "waitlists#show_place_in_line"
   get "/session-user", to: "waitlists#find_user_id"
+  get "/full_waitime", to: "waitlists#wait_time"
 
 end

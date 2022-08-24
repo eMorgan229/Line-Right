@@ -32,10 +32,25 @@ def show_place_in_line
             results[t] = { "place_in_line" => place_in_line, "est_wait_time" => place_in_line * wait_time}
 
         }
-
-
     render json: results
 end
+
+#GET /full_waitime
+def wait_time
+    waitlists = Theatre.joins(:waitlists).where(waitlists: {time_out: nil})
+    theatre_ids = waitlists.map {|w| w.id}
+
+    full_results = {}
+
+    theatre_ids.each { |t| 
+        full_people_in_line = Waitlist.where(theatre_id: t).order("created_at ASC").select("user_id")
+        full_results[t] = {"full_est_wait_time" => full_people_in_line.count * 5}
+    }
+    
+    render json: full_results
+
+end
+
 
 #GET /shortest_wait_time
 def shortest_wait_time

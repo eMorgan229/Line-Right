@@ -49,7 +49,6 @@ function handleRefresh() {
     })
 
 }
-
   function handleDeleteFromWaitlist(singleWaitlist) {
 
     console.log(singleWaitlist.id)
@@ -77,7 +76,7 @@ function handleRefresh() {
       <Card.Title className="card-name">{singleWaitlist.show_name}</Card.Title>
       <Card.Text>
        Current Waittime: 
-       { lineCount.length === 0 ? <></> : ` approximatley ${lineCount[singleWaitlist.id]["est_wait_time"]/60}`} 
+       { lineCount.length === 0 ? <></> : ` approximatley ${lineCount[singleWaitlist.id]["est_wait_time"]} minutes`} 
       </Card.Text>
       <Card.Text>
         {console.log(singleWaitlist.id)}
