@@ -100,21 +100,22 @@ function handleUpdateButton(index) {
     })
       .then((r) => r.json())
       .then((obj) => {
-        console.log(obj)
-         let tempWaitTime = []
-        for (const [key, value] of Object.entries(obj)) {
-          tempWaitTime[key] = value
-        }
-        setWaitTime(tempWaitTime)
-        console.log(tempWaitTime, waitTime)
+        setWaitTime(obj)
+         
+        
+        // setWaitTime(tempWaitTime)
+        // console.log(tempWaitTime)
       })
 
   }
   console.log(waitTime)
-//  setInterval(() => {handleLineCountRefresh()}, 15000);
+ setInterval(() => {handleLineCountRefresh()}, 15000);
+ setInterval(() => {handleWaitTimeRefresh()}, 15000);
+
 let displayedTheatres = theatres.map((t, index) => 
 
    {
+    console.log(waitTime[`${t.id}`])
       let addToLineButton;
       if (theatreInWaitlist(t.id)){
         addToLineButton = <div className="added">You've been added!</div>
@@ -135,7 +136,7 @@ let displayedTheatres = theatres.map((t, index) =>
         Current Number of People in Line: {lineCount[t.id]? lineCount[t.id] : 0}
       </Card.Text>
       <Card.Text>
-       Current Waittime: { waitTime.length === 0 ? <></> : `approximatley ${waitTime[t.id]["full_est_wait_time"]} minutes`} 
+       Current Waittime:  {waitTime[`${t.id}`]? `approximatley ${waitTime[`${t.id}`]["full_est_wait_time"]} minutes` : <>approximately 0 minutes</> }
 
       </Card.Text>
         {addToLineButton}
