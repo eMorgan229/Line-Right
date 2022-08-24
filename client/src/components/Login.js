@@ -47,7 +47,7 @@ const Login = ({onLogin}) => {
 return (
 <div className="form">
         
-<div className="area" >
+<div className="areaLogin" >
                 <ul className="circles">
                         <li></li>
                         <li></li>
