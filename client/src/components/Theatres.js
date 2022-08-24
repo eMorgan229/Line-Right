@@ -93,7 +93,7 @@ let displayedTheatres = theatres.map((t, index) =>
    {
       let addToLineButton;
       if (theatreInWaitlist(t.id)){
-        addToLineButton = <>You've been added!</>
+        addToLineButton = <div className="added">You've been added!</div>
       }
       else {
         addToLineButton = 
@@ -104,9 +104,9 @@ let displayedTheatres = theatres.map((t, index) =>
         </Button>
       }
       return (<Card className="card">
-    <Card.Header>{t.theatre_name}</Card.Header>
+    <Card.Header className="card-name">{t.theatre_name}</Card.Header>
     <Card.Body>
-      <Card.Title>{t.show_name}</Card.Title>
+      <Card.Title className="card-name">{t.show_name}</Card.Title>
       <Card.Text>
         Current Number of People in Line: {lineCount[t.id]? lineCount[t.id] : 0}
       </Card.Text>
@@ -120,13 +120,27 @@ let displayedTheatres = theatres.map((t, index) =>
   );
     return (
         <>
-        <h1>Theatres</h1>
+      <div className="area" >
+                <ul className="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
+        <h1 className="page-title">Theatres</h1>
         <button onClick={()=> {handleLineCountRefresh()}}>click</button>
-       <div>
+
+       <div className="theatre-cards">
         {displayedTheatres}
        </div>
 
-    
+    </div>
         </>
     )
 }

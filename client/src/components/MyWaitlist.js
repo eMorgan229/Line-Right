@@ -71,10 +71,10 @@ function handleRefresh() {
     console.log(myWaitlist)
 
     const displayedMyWaitLists = myWaitlist.map((singleWaitlist) =>
-    (<Card>
+    (<Card className="card">
     <Card.Header>{singleWaitlist.waitlist_id}</Card.Header>
     <Card.Body>
-      <Card.Title>{singleWaitlist.show_name}</Card.Title>
+      <Card.Title className="card-name">{singleWaitlist.show_name}</Card.Title>
       <Card.Text>
        Current Waittime: 
        { lineCount.length === 0 ? <></> : ` approximatley ${lineCount[singleWaitlist.id]["est_wait_time"]/60}`} 
@@ -96,14 +96,28 @@ function handleRefresh() {
     )
   );
     return(
-        <>
-            <h1>My Waitlists</h1>
+        <div className="main-div">
+        <div className="area" >
+                <ul className="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
+            <h1 className="page-title">My Waitlists</h1>
             <Timer handleRefresh={handleRefresh}/>
-            <button onClick={handleRefresh}>click to refresh</button>
-            <div>
+            {/* <button onClick={handleRefresh}>click to refresh</button> */}
+            <div className="theatre-cards">
                 {displayedMyWaitLists}
             </div>
-        </>
+          </div>
+        </div>
     )
 }
 export default MyWaitlist

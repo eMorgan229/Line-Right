@@ -53,6 +53,21 @@
   font-size: 50px;
 }
 
+.page-title {
+  font-family: 'Bungee Hairline', cursive;
+  font-weight: 700;
+}
+
+.card-name {
+  font-family: 'Spline Sans Mono', monospace;
+  font-weight: 700 !important;
+
+}
+.added {
+  font-family: 'Spline Sans Mono', monospace;
+  color: gray;
+}
+
 .logout-button {
   font-family: 'Zeyada';
   font-size: 50px;
@@ -186,6 +201,23 @@
   z-index:100;
 }
 
+.theatre-cards {
+  height: 100%;
+  z-index: 100;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card{
+margin: 5px !important;
+/* background-color: lightblue !important; */
+background-color: rgba(255,255,255,0.5) !important;
+
+}
+
  .whole-login {
   justify-content: center;
   display: flex;
@@ -202,10 +234,11 @@
   color: black !important;
  }
 
- .card{
-  
+ .main-div {
+  height: 100%;
  }
 
+ 
 /*background video css*/
       @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
@@ -216,6 +249,7 @@
 
       body{
           font-family: 'Exo', sans-serif;
+          height: 100%;
       }
 
 
@@ -244,6 +278,7 @@
         max-height: 100%;
         position: relative;
         z-index: 1;
+        height: 100%;
       }
 
       .circles{

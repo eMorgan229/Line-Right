@@ -49,6 +49,7 @@ const SignUp = ({onLogin}) => {
     return(
         <div className='form'>
             
+            
             <Form onSubmit={handleLogin}>
                 <h1 className="login">Signup!</h1>
             <Form.Group className="mb-3" controlId="formBasicUsername">

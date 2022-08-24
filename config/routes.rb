@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   get "/shortest_wait_time", to: "waitlists#shortest_wait_time"
   get "/line_count", to: "waitlists#get_line_count"
   get "/place_in_line", to: "waitlists#show_place_in_line"
+  get "/session-user", to: "waitlists#find_user_id"
 
 end

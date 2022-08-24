@@ -1,4 +1,8 @@
 class WaitlistsController < ApplicationController
+
+    # @current_user = User.find(session[:user_id])
+    # user_id = @current_user.id
+
 #GET /my-waitlists
 def show
     # myWaitlists = Waitlist.where(user_id: session[:user_id])
@@ -76,6 +80,11 @@ def get_line_count
     render json: line_count
 end
 
+#GET /session-user
+def find_user_id
+    user = User.find(session[:user_id])
+    render json: user
+end
 
 
 private
