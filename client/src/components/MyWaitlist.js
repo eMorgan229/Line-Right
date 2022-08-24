@@ -70,7 +70,10 @@ function handleRefresh() {
     console.log(myWaitlist)
 
     const displayedMyWaitLists = myWaitlist.map((singleWaitlist) =>
-    (<Card className="card">
+        
+     (<Card 
+        className={lineCount.length === 0 ? "card" : (lineCount[singleWaitlist.id]["est_wait_time"] === 5 ? "card2" : "card")}     
+     >
     <Card.Header>{singleWaitlist.waitlist_id}</Card.Header>
     <Card.Body>
       <Card.Title className="card-name">{singleWaitlist.show_name}</Card.Title>
@@ -85,11 +88,11 @@ function handleRefresh() {
        {/* {lineCount[singleWaitlist.theatre_id]["place_in_line"]} */}
        
       </Card.Text>
-      <Button
+      {/* <Button
       variant="primary"
       key={singleWaitlist.id}
       onClick={()=> handleDeleteFromWaitlist(singleWaitlist)}>{"delete"}
-      </Button>
+      </Button> */}
     </Card.Body>
     </Card>
     )
@@ -110,7 +113,7 @@ function handleRefresh() {
                         <li></li>
                 </ul>
             <h1 className="page-title">My Waitlists</h1>
-            <Timer handleRefresh={handleRefresh}/>
+            {/* <Timer handleRefresh={handleRefresh}/> */}
             {/* <button onClick={handleRefresh}>click to refresh</button> */}
             <div className="theatre-cards">
                 {displayedMyWaitLists}

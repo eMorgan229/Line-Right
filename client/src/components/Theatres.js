@@ -160,7 +160,7 @@ let displayedTheatres = theatres.map((t, index) =>
                         <li></li>
                 </ul>
         <h1 className="page-title">Theatres</h1>
-        <button onClick={()=> {handleLineCountRefresh()}}>click</button>
+        {/* <button onClick={()=> {handleLineCountRefresh()}}>click</button> */}
 
        <div className="theatre-cards">
         {displayedTheatres}
