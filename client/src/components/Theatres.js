@@ -87,7 +87,7 @@ function handleUpdateButton(index) {
         console.log(lineCount, tempLineCount)
       })
   }
-// setInterval(() => {handleLineCountRefresh()}, 15000);
+ setInterval(() => {handleLineCountRefresh()}, 15000);
 let displayedTheatres = theatres.map((t, index) => 
 
    {

@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.0",
     "bootstrap": "^5.2.0",
+    "client": "^0.0.1",
     "react-bootstrap": "^2.5.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.3.0"

@@ -9,13 +9,13 @@ def show
     #     render myWaitlists
 
     #with the user
-waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: nil})
+waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: session[:user_id], time_out: nil})
     render json: waitlists.order("wait_time ASC")
 end
 
 #GET /place_in_line
 def show_place_in_line
-    user_id_hard_coded = 10
+    user_id_hard_coded = session[:user_id]
 
     waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: user_id_hard_coded, time_out: nil})
     theatre_ids = waitlists.map {|w| w.id }
@@ -39,7 +39,7 @@ end
 
 #GET /shortest_wait_time
 def shortest_wait_time
-    waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: 10, time_out: nil})
+    waitlists = Theatre.joins(:waitlists).where(waitlists: {user_id: session[:user_id], time_out: nil})
     render json: waitlists.order("wait_time ASC").first
 
 end
