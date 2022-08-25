@@ -136,7 +136,7 @@ let displayedTheatres = theatres.map((t, index) =>
         Current Number of People in Line: {lineCount[t.id]? lineCount[t.id] : 0}
       </Card.Text>
       <Card.Text>
-       Current Waittime:  {waitTime[`${t.id}`]? `approximatley ${waitTime[`${t.id}`]["full_est_wait_time"]} minutes` : <>approximately 0 minutes</> }
+       Current Wait Time:  {waitTime[`${t.id}`]? `approximately ${waitTime[`${t.id}`]["full_est_wait_time"]} minutes` : <>approximately 0 minutes</> }
 
       </Card.Text>
         {addToLineButton}
